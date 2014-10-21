@@ -8,13 +8,13 @@ Currently, my blog appears on Scriptogram at http://scriptogr.am/guypursey
 
 Here is the directory structure:
 
-/.
-|__ /archives
-|__ /drafts
-|__ /posted
-|___.gitignore
-|__ autoscrp.sh
-|__ README.md
+	/.
+	|__ /archives
+	|__ /drafts
+	|__ /posted
+	|__ .gitignore
+	|__ autoscrp.sh
+	|__ README.md
 
 
 ### `/archives`
