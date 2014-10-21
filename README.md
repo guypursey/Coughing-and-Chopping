@@ -1,6 +1,6 @@
 # Coughing & Chopping
 
-This is the main folder for my blog.
+This repository represents elements of a workflow I use for blogging.
 
 Currently, my blog appears on Scriptogram at http://scriptogr.am/guypursey
 
@@ -23,11 +23,11 @@ This folder will likely remain empty, unless I decide to share my writing proces
 
 ### `/drafts`
 
-This folder will also likely remain empty for the same reason. Part of my publishing process is the transfer of a folder from `/drafts` to `/archives` so that I know it's out there. I can still make changes, corrections, etc. But it keeps files that I know are work in progress separate from files I know I've put out there.
+This folder will also likely remain empty for the same reason. Part of my publishing process is the transfer of a folder from `/drafts` to `/archives` so that I know what's out there and what still requires work. I can still make changes, corrections, etc. But it keeps files that I know are work in progress separate from files I know I've put out there.
 
 ### `/posts`
 
-This folder will contain all the Markdown files that make up my blog. It's a duplicate of the content on Scriptogram without any of the bumpf.
+This folder will contain all the Markdown files that make up my blog (as soon as I've worked out an appropriate license). It's a duplicate of the content on Scriptogram without any of the bumpf.
 
 ### `.gitignore`
 
@@ -46,14 +46,14 @@ You are reading this file now.
 If you want to use the same approach to your blog, with Scriptogram, you will need:
 
  - A Scriptogram account.
- - An "application" added to your account that allows you to post.
+ - An "application" added to the Scriptogram account that allows you to post.
  - Two files described below.
 
 ### `scrpakey.txt`
 
-This should contain your application key which you'll get upon adding the "application" mentioned above. It should contain nothing else, no spaces, no line breaks, nothing.
+This should contain the application key for Scriptogram which can be got by adding the "application" mentioned above. It should contain nothing else, no spaces, no line breaks, nothing.
 
 ### `scrpuser.txt`
 
-This should contain your Scriptogram user ID, which you should find under "Settings" when you login to Scriptogram. It should contain nothing else, no spaces, no line breaks, nothing.
+This should contain the Scriptogram user ID, which you should find under "Settings" when you login to Scriptogram. It should contain nothing else, no spaces, no line breaks, nothing.
 
