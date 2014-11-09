@@ -1,8 +1,16 @@
 # Coughing & Chopping
 
+v0.0.2
+
 This repository represents elements of a workflow I use for blogging.
 
 Currently, my blog appears on Scriptogram at http://scriptogr.am/guypursey
+
+## Usage
+
+ - Create a new draft by using `newdraft.sh` followed by name of folder to appear in `./drafts/`.
+ - Create metadata file for Scriptogram with `create_metascrp.sh`.
+ - Push to Scriptogram with `autoscrp.sh` followed by name of folder in `./drafts/`.
 
 ## Folders & files
 
@@ -14,6 +22,8 @@ Here is the directory structure:
 	|__ /posted
 	|__ .gitignore
 	|__ autoscrp.sh
+	|__ create_metascrp.sh
+	|__ newdraft.sh
 	|__ README.md
 
 
@@ -36,6 +46,14 @@ Ensuring local files with all the drafting and editing that went into them stay 
 ### `autoscrp.sh`
 
 This is the script which pushes a post to Scriptogram, pulling in the metadata as it goes.
+
+### `create_metascrp.sh`
+
+This is the script that can be used before `autoscrp.sh` to manually create the file needed by Scriptogram for metadata.
+
+### `newdraft.sh`
+
+This is the script which creates a new draft folder with an empty .md file in it ready for writing. The draft folder is initiated as a Git Repository.
 
 ### `README.md`
 
