@@ -1,6 +1,6 @@
 # Coughing & Chopping
 
-v0.0.2
+v0.0.3
 
 This repository represents elements of a workflow I use for blogging.
 
@@ -42,6 +42,10 @@ This folder will contain all the Markdown files that make up my blog (as soon as
 ### `.gitignore`
 
 Ensuring local files with all the drafting and editing that went into them stay local. Also ensures that keys required for Scriptogram remain private.
+
+### `archive.sh`
+
+This is the script which moves a folder from `drafts` to `archives` and renames it, as well as the file within, for when a post has been published. A copy of the file by itself is also made in `posted`.
 
 ### `autoscrp.sh`
 
