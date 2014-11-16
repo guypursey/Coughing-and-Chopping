@@ -21,8 +21,8 @@ Here is the directory structure:
 	|__ /drafts
 	|__ /posted
 	|__ .gitignore
+	|__ archive.sh
 	|__ autoscrp.sh
-	|__ create_metascrp.sh
 	|__ newdraft.sh
 	|__ README.md
 
@@ -49,11 +49,7 @@ This is the script which moves a folder from `drafts` to `archives` and renames 
 
 ### `autoscrp.sh`
 
-This is the script which pushes a post to Scriptogram, pulling in the metadata as it goes.
-
-### `create_metascrp.sh`
-
-This is the script that can be used before `autoscrp.sh` to manually create the file needed by Scriptogram for metadata.
+This is the script which pushes a post to Scriptogram, creating or pulling in the metadata as required.
 
 ### `newdraft.sh`
 
