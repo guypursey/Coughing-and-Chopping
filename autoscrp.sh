@@ -3,7 +3,7 @@
 # Publish FILE to Scriptogr.am account (grabbing metadata as we go).
 # FILE should have no extension.
 #
-# Expects metascrp.txt accompanying named file to pull metadata from.
+# Expects tags.txt accompanying named file to pull metadata from.
 # Expects there two text files in location of script,
 # one containing app key for Scriptogram,
 # the other containing the user ID.
