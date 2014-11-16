@@ -23,11 +23,12 @@ else
 	echo "Adding..."
 	URL="http://scriptogr.am/api/article/post/"
 	fileparam="-d name=$1"
-	header=$(grep -E --max-count=1 '^\#[^#]*?$' $1.md)
+	header=$(grep -E --max-count=1 '^\#[^#]*?$' $DIR/archives/$1/$1.md)
 	bareheader=${header#\# }
-	contents=$(grep -Ev '^\#[^#]*?$' $1.md)
-	tags="$(awk -v OFS=', ' -v RS= '{$1=$1}1' tags.txt)"
-	metadata=$(echo -e "Title: $bareheader\nDate: $(date '+%F %H:%M')\nPublished: True\nTags: $tags \n")
+	contents=$(grep -Ev '^\#[^#]*?$' $DIR/archives/$1/$1.md)
+	datetime=$(date '+%F %H:%M')
+	tags="$(awk -v OFS=', ' -v RS= '{$1=$1}1' $DIR/archives/$1/$1/tags.txt)"
+	metadata=$(echo -e "Title: $bareheader\nDate: $datetime\nTags: $tags \n")
 	filedata="$metadata"$'\n\n'"$contents"
 	echo $1
 fi
