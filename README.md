@@ -24,6 +24,7 @@ Here is the directory structure:
 	|__ archive.sh
 	|__ autoscrp.sh
 	|__ newdraft.sh
+	|__ publish.sh
 	|__ README.md
 
 
@@ -54,6 +55,10 @@ This is the script which pushes a post to Scriptogram, creating or pulling in th
 ### `newdraft.sh`
 
 This is the script which creates a new draft folder with an empty .md file in it ready for writing. The draft folder is initiated as a Git Repository.
+
+### `publish.sh`
+
+This single file can be used to archive a piece and push it out to Scriptogram in one command.
 
 ### `README.md`
 
