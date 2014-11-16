@@ -1,11 +1,11 @@
-# Clean up file name.
+## Clean up file name.
 
-    cleanfilename=$(echo $1 | tr '_ ' \-)
-    newdirname=$(echo $(date '+%FT%H-%M')_$cleanfilename)
+	cleanfilename=$(echo $1 | tr '_ ' \-)
+	newdirname=$(echo $(date '+%FT%H-%M')_$cleanfilename)
 
 ## Move whole folder from `drafts` to `archives`, with new name.
 
-    mv ./drafts/$1 ./archives/$newdirname
+	mv ./drafts/$1 ./archives/$newdirname
 
 ## Rename main file via Git command.
 
