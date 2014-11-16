@@ -11,8 +11,12 @@
 
 	cd ./archives/$newdirname
 	git mv $1.md $newdirname.md
-	git commit -m "Renamed main file on publish."
+	git commit -qm "Renamed main file on publish."
 
 ## Make a copy of the post in `posted` folder.
 
-    cp $newdirname.md ../../posted
+	cp $newdirname.md ../../posted
+
+## Return the new name of the folder/file.
+
+	echo $newdirname
