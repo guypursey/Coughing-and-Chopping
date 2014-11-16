@@ -1,6 +1,6 @@
 # Coughing & Chopping
 
-v0.0.3
+v0.0.4
 
 This repository represents elements of a workflow I use for blogging.
 
