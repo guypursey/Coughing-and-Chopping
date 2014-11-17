@@ -26,6 +26,8 @@ else
 	header=$(grep -E --max-count=1 '^\#[^#]*?$' "$DIR"/archives/$1/$1.md)
 	bareheader=${header#\# }
 	contents=$(grep -Ev '^\#[^#]*?$' "$DIR"/archives/$1/$1.md)
+	username=$(<"$DIR"/scrpname.txt)
+	fileparsed="${contents//\(\/\$\//\(\/$username\/post\/}"
 	datetime=$(date '+%F %H:%M')
 	tags=$(awk -v OFS=', ' -v RS= '{$1=$1}1' "$DIR"/archives/$1/tags.txt)
 	metadata=$(echo -e "Title: $bareheader\nDate: $datetime\nTags: $tags\nSlug: $1\n")
