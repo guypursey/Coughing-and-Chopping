@@ -28,7 +28,7 @@ else
 	contents=$(grep -Ev '^\#[^#]*?$' "$DIR"/archives/$1/$1.md)
 	datetime=$(date '+%F %H:%M')
 	tags=$(awk -v OFS=', ' -v RS= '{$1=$1}1' "$DIR"/archives/$1/tags.txt)
-	metadata=$(echo -e "Title: $bareheader\nDate: $datetime\nTags: $tags \n")
+	metadata=$(echo -e "Title: $bareheader\nDate: $datetime\nTags: $tags\nSlug: $1\n")
 	filedata="$metadata"$'\n\n'"$contents"
 	echo $1
 fi
