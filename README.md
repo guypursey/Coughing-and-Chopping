@@ -80,3 +80,7 @@ This should contain the application key for Scriptogram which can be got by addi
 
 This should contain the Scriptogram user ID, which you should find under "Settings" when you login to Scriptogram. It should contain nothing else, no spaces, no line breaks, nothing.
 
+### `scrpname.txt`
+
+This contains the actual username which appears in the Scriptogram address, used for the purposes of crosslinking.
+
