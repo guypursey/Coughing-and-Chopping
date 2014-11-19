@@ -6,6 +6,7 @@
 			datetime=$(<"$DIR"/archives/$1/date.txt)
 		else
 			datetime=$(date '+%FT%H-%M')
+			echo $datetime > date.txt
 	fi
 	newdirname=$(echo "$datetime""$_""$cleanfilename")
 
