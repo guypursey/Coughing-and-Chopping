@@ -1,12 +1,12 @@
 ## Clean up file name.
 
 	cleanfilename=$(echo $1 | tr '_ ' \-)
-	if [ -f "$DIR"/archives/$1/date.txt ]
+	if [ -f "$DIR"/drafts/$1/date.txt ]
 		then
-			datetime=$(<"$DIR"/archives/$1/date.txt)
+			datetime=$(<"$DIR"/drafts/$1/date.txt)
 		else
 			datetime=$(date '+%FT%H-%M')
-			echo $datetime > date.txt
+			echo $datetime > "$DIR"/drafts/$1/date.txt
 	fi
 	newdirname=$(echo "$datetime""$_""$cleanfilename")
 
