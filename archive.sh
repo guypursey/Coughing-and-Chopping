@@ -1,13 +1,16 @@
+## Find or create `date.txt`.	
+
+	if [ -f ./drafts/$1/date.txt ]
+		then
+			datetime=$(<./drafts/$1/date.txt)
+		else
+			datetime=$(date '+%FT%H-%M')
+			echo $datetime > ./drafts/$1/date.txt
+	fi
+
 ## Clean up file name.
 
 	cleanfilename=$(echo $1 | tr '_ ' \-)
-	if [ -f "$DIR"/drafts/$1/date.txt ]
-		then
-			datetime=$(<"$DIR"/drafts/$1/date.txt)
-		else
-			datetime=$(date '+%FT%H-%M')
-			echo $datetime > "$DIR"/drafts/$1/date.txt
-	fi
 	newdirname=$(echo "$datetime""$_""$cleanfilename")
 
 ## Move whole folder from `drafts` to `archives`, with new name.
