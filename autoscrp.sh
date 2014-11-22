@@ -28,7 +28,11 @@ else
 	contents=$(grep -Ev '^\#[^#]*?$' "$DIR"/archives/$1/$1.md)
 	username=$(<"$DIR"/scrpname.txt)
 	fileparsed="${contents//\(\/\$\//\(\/$username\/post\/}"
-	datetime=`echo $1 | cut -c1-16`
+	dateprfx=${1:0:16}
+	date=${dateprfx:0:10}
+	hour=${dateprfx:11:2}
+	mnte=${dateprfx:14:2}
+	datetime="$date"\ "$hour":"$mnte"
 	tags=$(awk -v OFS=', ' -v RS= '{$1=$1}1' "$DIR"/archives/$1/tags.txt)
 	metadata=$(echo -e "Title: $bareheader\nDate: $datetime\nTags: $tags\nSlug: $1\n")
 	filedata="$metadata"$'\n\n'"$contents"
