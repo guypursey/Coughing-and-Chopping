@@ -11,7 +11,7 @@
 ## Clean up file name.
 
 	cleanfilename=$(echo $1 | tr '_ ' \-)
-	newdirname=$(echo "$datetime""$_""$cleanfilename")
+	newdirname=$(echo "$datetime"_"$cleanfilename")
 
 ## Move whole folder from `drafts` to `archives`, with new name.
 
