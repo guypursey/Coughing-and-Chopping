@@ -9,12 +9,12 @@
 
 	datetime=$(<./drafts/$1/date.txt)
 	datetime=${datetime:0:16}
-	dateprfx=${file:0:4}${file:5:2}${file:8:2}${file:11:2}${file:14:2}
+	dateprfx=${datetime:0:4}${datetime:5:2}${datetime:8:2}${datetime:11:2}${datetime:14:2}
 
 ## Clean up file name.
 
 	cleanfilename=$(echo $1 | tr '_ ' \-)
-	newdirname=$(echo "$dateprfx"-"$cleanfilename")
+	newdirname=$(echo "$dateprfx"\-"$cleanfilename")
 
 ## Move whole folder from `drafts` to `archives`, with new name.
 
