@@ -31,7 +31,7 @@ else
 	datetime=$(<"$DIR"/archives/"$1"/date.txt)
 	tags=$(awk -v OFS=', ' -v RS= '{$1=$1}1' "$DIR"/archives/$1/tags.txt)
 	metadata=$(echo -e "Title: $bareheader\nDate: $datetime\nTags: $tags\nSlug: $1\n")
-	filedata="$metadata"$'\n\n'"$contents"
+	filedata="$metadata"$'\n\n'"$fileparsed"
 	echo $1
 fi
 
