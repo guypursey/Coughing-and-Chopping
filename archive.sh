@@ -1,13 +1,17 @@
+## Find source folder where we are.
+
+	DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 ## Find or create `date.txt`.	
 
-	if [ ! -f ./drafts/$1/date.txt ]
+	if [ ! -f "$DIR"/drafts/$1/date.txt ]
 		then
-			echo $(date '+%F %H:%M') > ./drafts/$1/date.txt
+			echo $(date '+%F %H:%M') > "$DIR"/drafts/$1/date.txt
 	fi
 
 ## Get date from `date.txt` and prepare for use in file name.
 
-	datetime=$(<./drafts/$1/date.txt)
+	datetime=$(<"$DIR"/drafts/$1/date.txt)
 	datetime=${datetime:0:16}
 	dateprfx=${datetime:0:4}${datetime:5:2}${datetime:8:2}${datetime:11:2}${datetime:14:2}
 
@@ -18,11 +22,11 @@
 
 ## Move whole folder from `drafts` to `archives`, with new name.
 
-	mv ./drafts/$1 ./archives/$newdirname
+	mv "$DIR"/drafts/$1 "$DIR"/archives/$newdirname
 
 ## Rename main file via Git command.
 
-	cd ./archives/$newdirname
+	cd "$DIR"/archives/$newdirname
 	git mv $1.md $newdirname.md
 	git commit -qm "Renamed main file on publish."
 
