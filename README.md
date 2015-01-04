@@ -14,7 +14,7 @@ This workflow relies on Git for versioning.
 
 Currently this workflow depends on posting to Scriptogram. You can either:
 
- - Comment out the relevant line in `publish.sh`.
+ - Comment out the relevant line in `publish.sh`, or:
  - Create three text files called `scrpakey.txt`, `scrpuser.txt` and `scrpname.txt` containing the application key, user ID and username of your account respectively. Further details are given in [the section on "Absent Files"](#absent-files) below.
 
 ## Usage
