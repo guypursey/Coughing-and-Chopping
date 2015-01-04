@@ -1,16 +1,31 @@
 # Coughing & Chopping
 
-v0.0.4
+v0.0.5
 
 This repository represents elements of a workflow I use for blogging.
 
 Currently, my blog appears on Scriptogram at http://scriptogr.am/guypursey
 
+## Dependencies
+
+This workflow relies on Git for versioning.
+
+## Set-up
+
+Currently this workflow depends on posting to Scriptogram. You can either:
+
+ - Comment out the relevant line in `publish.sh`.
+ - Create three text files called `scrpakey.txt`, `scrpuser.txt` and `scrpname.txt` containing the application key, user ID and username of your account respectively. Further details are given in [the section on "Absent Files"](#absent-files) below.
+
 ## Usage
 
  - Create a new draft by using `newdraft.sh` followed by name of folder to appear in `./drafts/`.
- - Create metadata file for Scriptogram with `create_metascrp.sh`.
- - Push to Scriptogram with `autoscrp.sh` followed by name of folder in `./drafts/`.
+ - Edit the main `.md` file in the folder to start writing your post.
+ - Add a keyword to each line of `tags.txt`.
+ - Commit amendments to your post and track your progress. Each draft folder is its own Git repository.
+ - Publish the post using `publish.sh`, which will move your folder from `./drafts` to `./archives` and create a copy of the post in `./posted`.
+
+You can optionally set the date of publishing by putting an ISO format date into a file called `date.txt` in your draft folder. If you don't do this, one will be creating automatically when you publish.
 
 ## Folders & files
 
