@@ -20,7 +20,8 @@ Currently this workflow depends on posting to Scriptogram. You can either:
 ## Usage
 
  - Create a new draft by using `newdraft.sh` followed by name of folder to appear in `./drafts/`.
- - Edit the main `.md` file in the folder to start writing your post.
+ - Edit the main `.md` file in the folder to start writing your post in Markdown.
+ - Precede relative links with `/$/`.
  - Add a keyword to each line of `tags.txt`.
  - Commit amendments to your post and track your progress. Each draft folder is its own Git repository.
  - Publish the post using `publish.sh`, which will move your folder from `./drafts` to `./archives` and create a copy of the post in `./posted`.
