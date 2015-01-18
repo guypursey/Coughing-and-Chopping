@@ -5,8 +5,12 @@ scrpakey.txt
 scrpuser.txt
 scrpname.txt
 
-# Keep remote `archives` and `drafts` folder empty (but for `README.md` which should already be tracked). History should be private; the folders should be placeholders for others wanting to use the same model.
+# Keep remote `archives`, `drafts`, and `images` folder empty 
+# except for `README.md` which should already be tracked. 
+
+## History should be private; the folders should be placeholders 
+## for others wanting to use the same model.
 
 drafts/*
 archives/*
-
+images/*
