@@ -20,6 +20,15 @@ then
 	filedata=""
 	echo $2
 else
+
+	echo "Creating image map..."
+	declare -A imagemap
+
+	while read -r line || [[ -n $line ]]; do
+		arr=(${line//,/ })
+		imagemap[${arr[0]}]=${arr[1]}
+	done < "$DIR"/images/imagemap.csv
+
 	echo "Adding..."
 	URL="http://scriptogr.am/api/article/post/"
 	fileparam="-d name=$1"
@@ -27,7 +36,14 @@ else
 	bareheader=${header#\# }
 	contents=$(grep -Ev '^\#[^#]*?$' "$DIR"/archives/$1/$1.md)
 	username=$(<"$DIR"/scrpname.txt)
+
 	fileparsed="${contents//\(\/\$\//\(\/$username\/post\/}"
+
+	re='(.*^\!\[[[:print:]]+\]\()\/\!\/([0-9a-z\.\-]+)(\).*)'
+	while [[ $fileparsed =~ $re ]]; do
+	  fileparsed=${BASH_REMATCH[1]}${imagemap[${BASH_REMATCH[2]}]}${BASH_REMATCH[3]}
+	done
+
 	datetime=$(<"$DIR"/archives/"$1"/date.txt)
 	tags=$(awk -v OFS=', ' -v RS= '{$1=$1}1' "$DIR"/archives/$1/tags.txt)
 	metadata=$(echo -e "Title: $bareheader\nDate: $datetime\nTags: $tags\nSlug: $1\n")
