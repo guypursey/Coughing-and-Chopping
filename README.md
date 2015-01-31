@@ -1,6 +1,6 @@
 # Coughing & Chopping
 
-v0.0.5
+v0.0.6
 
 This repository represents elements of a workflow I use for blogging.
 
@@ -22,6 +22,7 @@ Currently this workflow depends on posting to Scriptogram. You can either:
  - Create a new draft by using `newdraft.sh` followed by name of folder to appear in `./drafts/`.
  - Edit the main `.md` file in the folder to start writing your post in Markdown.
  - Precede relative links with `/$/`.
+ - Precede local image references (for images in the `images` folder) with `/!/`.
  - Add a keyword to each line of `tags.txt`.
  - Commit amendments to your post and track your progress. Each draft folder is its own Git repository.
  - Publish the post using `publish.sh`, which will move your folder from `./drafts` to `./archives` and create a copy of the post in `./posted`.
@@ -35,6 +36,7 @@ Here is the directory structure:
 	/.
 	|__ /archives
 	|__ /drafts
+	|__ /images
 	|__ /posted
 	|__ .gitignore
 	|__ archive.sh
@@ -51,6 +53,10 @@ This folder will likely remain empty, unless I decide to share my writing proces
 ### `/drafts`
 
 This folder will also likely remain empty for the same reason. Part of my publishing process is the transfer of a folder from `/drafts` to `/archives` so that I know what's out there and what still requires work. I can still make changes, corrections, etc. But it keeps files that I know are work in progress separate from files I know I've put out there.
+
+### `/images`
+
+This folder is a placeholder for images. It contains a `README` and can be used to house images to be used in posts. It should contain a file called `imagemap.csv` containing information about where images are hosted online. Further information below.
 
 ### `/posted`
 
@@ -88,6 +94,8 @@ If you want to use the same approach to your blog, with Scriptogram, you will ne
  - An "application" added to the Scriptogram account that allows you to post.
  - Two files described below.
 
+If you want to use images in your posts, you can store them in the `/images` folder but you will need to map them with a file called `imagemap.csv` which is described below.
+
 ### `scrpakey.txt`
 
 This should contain the application key for Scriptogram which can be got by adding the "application" mentioned above. It should contain nothing else, no spaces, no line breaks, nothing.
@@ -99,4 +107,8 @@ This should contain the Scriptogram user ID, which you should find under "Settin
 ### `scrpname.txt`
 
 This contains the actual username which appears in the Scriptogram address, used for the purposes of crosslinking.
+
+### `images/imagemap.csv`
+
+This file should contain the filenames of any images in the `/images` folder where it sits, followed by a comma and then the address of where that image is hosted online. Each file and address pair should sit on a separate line.
 
