@@ -41,7 +41,21 @@ else
 
 	re='(.*^\!\[[[:print:]]+\]\()\/\!\/([0-9a-z\.\-]+)(\).*)'
 	while [[ $fileparsed =~ $re ]]; do
-	  fileparsed=${BASH_REMATCH[1]}${imagemap[${BASH_REMATCH[2]}]}${BASH_REMATCH[3]}
+
+		if [ ${imagemap[${BASH_REMATCH[2]}]+isset} ]; then
+			echo "Image ${BASH_REMATCH[2]} found. Using existing address."
+			fileparsed=${BASH_REMATCH[1]}${imagemap[${BASH_REMATCH[2]}]}${BASH_REMATCH[3]}
+		else
+			echo "Publishing ${BASH_REMATCH[2]}"
+			if IMGRTN=$("$DIR"/images/picasa/test-post-photo.sh -f ${BASH_REMATCH[2]}); then
+				echo "Image published okay."
+				fileparsed=${BASH_REMATCH[1]}${IMGRTN}${BASH_REMATCH[3]}
+			else
+				echo "Problem with publishing an image referenced within the post." 1>&2
+				exit 1
+			fi
+		fi
+
 	done
 
 	datetime=$(<"$DIR"/archives/"$1"/date.txt)
