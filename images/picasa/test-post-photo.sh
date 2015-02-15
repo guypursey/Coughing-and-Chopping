@@ -14,7 +14,8 @@ if [[ $NEWALB =~ $re ]]; then
 fi
 # What happens if we can't find access ID?
 
-FILESLUG="mongolian-flower.jpg"
+FILESLUG=$1
+
 # How can we add slugs and files programmatically?
 # What if slug is already taken?
 
