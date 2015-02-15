@@ -1,6 +1,6 @@
 # Coughing & Chopping
 
-v0.0.6
+v0.0.7
 
 This repository represents elements of a workflow I use for blogging.
 
@@ -110,5 +110,5 @@ This contains the actual username which appears in the Scriptogram address, used
 
 ### `images/imagemap.csv`
 
-This file should contain the filenames of any images in the `/images` folder where it sits, followed by a comma and then the address of where that image is hosted online. Each file and address pair should sit on a separate line.
+This file should contain the filenames of any images in the `/images` folder where it sits, followed by a comma and then the address of where that image is hosted online. Each file and address pair should sit on a separate line. If using Picasa (as the scripts are currently set up to do), this file should be handled automatically.
 
