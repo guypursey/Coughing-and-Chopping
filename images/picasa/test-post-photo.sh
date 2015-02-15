@@ -13,18 +13,30 @@ if [[ $NEWALB =~ $re ]]; then
 fi
 # What happens if we can't find access ID?
 
+# Get file slug from argument.
 FILESLUG=$1
 
-# How can we add slugs and files programmatically?
+# Check if file exists in right location.
 
-# How can we check file is present?
 if [ ! -f ../$FILESLUG ]; then
     echo "File not found!"
     exit 1
 fi
 
-# What if slug is already taken?
+# Check to see if slug is already mapped.
 
+	echo "Creating image map..."
+	declare -A imagemap
+
+	while read -r line || [[ -n $line ]]; do
+		arr=(${line//,/ })
+		imagemap[${arr[0]}]=${arr[1]}
+	done < ../imagemap.csv
+
+	if [ ${imagemap[$FILESLUG]+abc} ]; then
+		echo "File already mapped!"
+		exit 1
+	fi
 
 
 FILESIZE=$(stat -c "%s" "../$FILESLUG")
