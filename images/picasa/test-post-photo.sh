@@ -14,7 +14,31 @@ fi
 # What happens if we can't find access ID?
 
 # Get file slug from argument.
-FILESLUG=$1
+
+	if [ "$1" == "-f" ]; then
+
+		FILESLUG=$2
+
+	else
+
+# Check to see if slug is already mapped.
+		
+		FILESLUG=$1
+
+		echo "Creating image map..."
+		declare -A imagemap
+
+		while read -r line || [[ -n $line ]]; do
+			arr=(${line//,/ })
+			imagemap[${arr[0]}]=${arr[1]}
+		done < ../imagemap.csv
+
+		if [ ${imagemap[$FILESLUG]+isset} ]; then
+			echo "File already mapped!"
+			exit 1
+		fi
+		
+	fi
 
 # Check if file exists in right location.
 
@@ -23,28 +47,13 @@ if [ ! -f ../$FILESLUG ]; then
     exit 1
 fi
 
-# Check to see if slug is already mapped.
-
-	echo "Creating image map..."
-	declare -A imagemap
-
-	while read -r line || [[ -n $line ]]; do
-		arr=(${line//,/ })
-		imagemap[${arr[0]}]=${arr[1]}
-	done < ../imagemap.csv
-
-	if [ ${imagemap[$FILESLUG]+abc} ]; then
-		echo "File already mapped!"
-		exit 1
-	fi
-
-
 FILESIZE=$(stat -c "%s" "../$FILESLUG")
 echo $FILESIZE
 
 # Try posting a photo with test xml.
 NEWIMG=$(curl https://picasaweb.google.com/data/feed/api/user/default/albumid/$ALBMID -X POST -H "GData-Version: 2" -H "Authorization: Bearer $ACCTOK" -H "Content-Type: image/jpeg" -H "Content-Length: $FILESIZE" -H "Slug: $FILESLUG" --data-binary @../$FILESLUG)
 
+# How can we ensure the photo has uploaded properly?
 echo $NEWIMG > _result_new_photo.xml
 
 re="<content type='.*' src='(.*/$FILESLUG)'/>"
