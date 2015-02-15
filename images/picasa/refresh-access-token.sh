@@ -1,6 +1,8 @@
-CLNTID=$(<_client_id.txt)
-CLNTSE=$(<_client_secret.txt)
-REFTOK=$(<_refresh_token.txt)
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+CLNTID=$(<"$DIR"/_client_id.txt)
+CLNTSE=$(<"$DIR"/_client_secret.txt)
+REFTOK=$(<"$DIR"/_refresh_token.txt)
 
 echo "Refresh token:" $REFTOK
 
@@ -12,5 +14,5 @@ if [[ $POLLRT =~ $re ]]; then
 	ACCTOK=${BASH_REMATCH[1]}
 fi	
 
-echo $ACCTOK > _access_token.txt
+echo $ACCTOK > "$DIR"/_access_token.txt
 echo "Action token:" $ACCTOK
