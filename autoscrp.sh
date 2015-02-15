@@ -47,7 +47,7 @@ else
 			fileparsed=${BASH_REMATCH[1]}${imagemap[${BASH_REMATCH[2]}]}${BASH_REMATCH[3]}
 		else
 			echo "Publishing ${BASH_REMATCH[2]}"
-			if IMGRTN=$("$DIR"/images/picasa/test-post-photo.sh -f ${BASH_REMATCH[2]}); then
+			if IMGRTN=$("$DIR"/images/picasa/post-image.sh -f ${BASH_REMATCH[2]}); then
 				echo "Image published okay."
 				fileparsed=${BASH_REMATCH[1]}${IMGRTN}${BASH_REMATCH[3]}
 			else
