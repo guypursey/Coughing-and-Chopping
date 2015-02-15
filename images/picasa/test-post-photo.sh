@@ -10,14 +10,22 @@ NEWALB=$(<_result_new_album.xml)
 re="<gphoto:id>(.*)</gphoto:id>"
 if [[ $NEWALB =~ $re ]]; then
 	ALBMID=${BASH_REMATCH[1]}
-	echo $ALBMID
 fi
 # What happens if we can't find access ID?
 
 FILESLUG=$1
 
 # How can we add slugs and files programmatically?
+
+# How can we check file is present?
+if [ ! -f ../$FILESLUG ]; then
+    echo "File not found!"
+    exit 1
+fi
+
 # What if slug is already taken?
+
+
 
 FILESIZE=$(stat -c "%s" "../$FILESLUG")
 echo $FILESIZE
