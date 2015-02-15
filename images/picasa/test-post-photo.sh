@@ -14,15 +14,15 @@ if [[ $NEWALB =~ $re ]]; then
 fi
 # What happens if we can't find access ID?
 
-FILESIZE=$(stat -c "%s" "../mongolian-flower.jpg")
-echo $FILESIZE
-
-FILESLUG="mongolian-flower-1.jpg"
+FILESLUG="mongolian-flower.jpg"
 # How can we add slugs and files programmatically?
 # What if slug is already taken?
 
+FILESIZE=$(stat -c "%s" "../$FILESLUG")
+echo $FILESIZE
+
 # Try posting a photo with test xml.
-NEWIMG=$(curl https://picasaweb.google.com/data/feed/api/user/default/albumid/$ALBMID -X POST -H "GData-Version: 2" -H "Authorization: Bearer $ACCTOK" -H "Content-Type: image/jpeg" -H "Content-Length: $FILESIZE" -H "Slug: $FILESLUG" --data-binary @../mongolian-flower.jpg)
+NEWIMG=$(curl https://picasaweb.google.com/data/feed/api/user/default/albumid/$ALBMID -X POST -H "GData-Version: 2" -H "Authorization: Bearer $ACCTOK" -H "Content-Type: image/jpeg" -H "Content-Length: $FILESIZE" -H "Slug: $FILESLUG" --data-binary @../$FILESLUG)
 
 echo $NEWIMG > _result_new_photo.xml
 
