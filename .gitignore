@@ -9,6 +9,7 @@
 
 content/drafts/*
 content/archives/*
+content/posted/*
 content/images/*
 
 ## Account data should also be private.
