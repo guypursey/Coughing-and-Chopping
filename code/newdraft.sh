@@ -5,7 +5,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Set up new draft folder with pre-requisite templates.
 
-cd "$DIR"/drafts
+cd "$DIR"/../content/drafts
 mkdir $1
 cd $1
 touch $1.md

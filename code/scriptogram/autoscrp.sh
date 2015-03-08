@@ -27,15 +27,15 @@ else
 	while read -r line || [[ -n $line ]]; do
 		arr=(${line//,/ })
 		imagemap[${arr[0]}]=${arr[1]}
-	done < "$DIR"/images/imagemap.csv
+	done < "$DIR"/../../userdata/picasa/imagemap.csv
 
 	echo "Adding..."
 	URL="http://scriptogr.am/api/article/post/"
 	fileparam="-d name=$1"
-	header=$(grep -E --max-count=1 '^\#[^#]*?$' "$DIR"/archives/$1/$1.md)
+	header=$(grep -E --max-count=1 '^\#[^#]*?$' "$DIR"/../../content/archives/$1/$1.md)
 	bareheader=${header#\# }
-	contents=$(grep -Ev '^\#[^#]*?$' "$DIR"/archives/$1/$1.md)
-	username=$(<"$DIR"/scrpname.txt)
+	contents=$(grep -Ev '^\#[^#]*?$' "$DIR"/../../content/archives/$1/$1.md)
+	username=$(<"$DIR"/../../userdata/scriptogram/scrpname.txt)
 
 	fileparsed="${contents//\(\/\$\//\(\/$username\/post\/}"
 
@@ -47,7 +47,7 @@ else
 			fileparsed=${BASH_REMATCH[1]}${imagemap[${BASH_REMATCH[2]}]}${BASH_REMATCH[3]}
 		else
 			echo "Publishing ${BASH_REMATCH[2]}"
-			if IMGRTN=$("$DIR"/images/picasa/post-image.sh -f ${BASH_REMATCH[2]}); then
+			if IMGRTN=$("$DIR"/../picasa/post-image.sh -f ${BASH_REMATCH[2]}); then
 				echo "Image published okay."
 				fileparsed=${BASH_REMATCH[1]}${IMGRTN}${BASH_REMATCH[3]}
 			else
@@ -58,16 +58,16 @@ else
 
 	done
 
-	datetime=$(<"$DIR"/archives/"$1"/date.txt)
-	tags=$(awk -v OFS=', ' -v RS= '{$1=$1}1' "$DIR"/archives/$1/tags.txt)
+	datetime=$(<"$DIR"/../../content/archives/"$1"/date.txt)
+	tags=$(awk -v OFS=', ' -v RS= '{$1=$1}1' "$DIR"/../../content/archives/$1/tags.txt)
 	metadata=$(echo -e "Title: $bareheader\nDate: $datetime\nTags: $tags\nSlug: $1\n")
 	filedata="$metadata"$'\n\n'"$fileparsed"
 	echo $1
 fi
 
 curl \
-       --data-urlencode app_key@"$DIR/scrpakey.txt" \
-       --data-urlencode user_id@"$DIR/scrpuser.txt" \
+       --data-urlencode app_key@"$DIR/../../userdata/scriptogram/scrpakey.txt" \
+       --data-urlencode user_id@"$DIR/../../userdata/scriptogram/scrpuser.txt" \
        "$fileparam" \
        --data-urlencode text="$filedata" \
        $URL

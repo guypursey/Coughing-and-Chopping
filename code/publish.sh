@@ -8,4 +8,4 @@
 
 ## Use reference for relevant piece to push out to Scriptogram.
 
-	"$DIR"/autoscrp.sh $pieceref
+	"$DIR"/scriptogram/autoscrp.sh $pieceref

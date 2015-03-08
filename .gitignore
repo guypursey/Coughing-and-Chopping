@@ -1,16 +1,18 @@
 
-# Private keys.
 
-scrpakey.txt
-scrpuser.txt
-scrpname.txt
-
-# Keep remote `archives`, `drafts`, and `images` folder empty 
-# except for `README.md` which should already be tracked. 
+# Keep remote `archives`, `drafts`, and `images` folders
+# in `content` empty except for `README.md` files
+# which should already be tracked. 
 
 ## History should be private; the folders should be placeholders 
 ## for others wanting to use the same model.
 
-drafts/*
-archives/*
-images/*
+content/drafts/*
+content/archives/*
+content/posted/*
+content/images/*
+
+## Account data should also be private.
+
+userdata/scriptogram/*
+userdata/picasa/*
