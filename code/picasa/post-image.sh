@@ -6,11 +6,11 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Get access token.
 
-ACCTOK=$(<"$DIR"/_access_token.txt)
+ACCTOK=$(<"$DIR"/../../userdata/picasa/_access_token.txt)
 # What happens if we can't find access ID?
 
 # Get XML album created by `test-post-with-access-token.sh`
-NEWALB=$(<"$DIR"/_result_new_album.xml)
+NEWALB=$(<"$DIR"/../../userdata/picasa/_result_new_album.xml)
 # What happens if we can't find album?
 
 # Find album ID.
@@ -48,15 +48,15 @@ fi
 
 # Check if file exists in right location.
 
-if [ ! -f "$DIR"/../$FILESLUG ]; then
+if [ ! -f "$DIR"/../../content/images/$FILESLUG ]; then
     echo "File not found!" 1>&2
     exit 1
 fi
 
-FILESIZE=$(stat -c "%s" "$DIR/../$FILESLUG")
+FILESIZE=$(stat -c "%s" "$DIR/../../content/images/$FILESLUG")
 
 # Try posting a photo with test xml.
-NEWIMG=$(curl https://picasaweb.google.com/data/feed/api/user/default/albumid/$ALBMID -X POST -H "GData-Version: 2" -H "Authorization: Bearer $ACCTOK" -H "Content-Type: image/jpeg" -H "Content-Length: $FILESIZE" -H "Slug: $FILESLUG" --data-binary @"$DIR"/../$FILESLUG)
+NEWIMG=$(curl https://picasaweb.google.com/data/feed/api/user/default/albumid/$ALBMID -X POST -H "GData-Version: 2" -H "Authorization: Bearer $ACCTOK" -H "Content-Type: image/jpeg" -H "Content-Length: $FILESIZE" -H "Slug: $FILESLUG" --data-binary @"$DIR"/../../content/images/$FILESLUG)
 
 # How can we ensure the photo has uploaded properly?
 echo $NEWIMG > _result_new_photo.xml
@@ -65,7 +65,7 @@ re="<content type='.*' src='(.*/$FILESLUG)'/>"
 if [[ $NEWIMG =~ $re ]]; then
 	IMGURL=${BASH_REMATCH[1]}
 	echo $IMGURL
-	echo "$FILESLUG, $IMGURL" >> "$DIR"/../imagemap.csv
+	echo "$FILESLUG, $IMGURL" >> "$DIR"/../../userdata/picasa/imagemap.csv
 	exit 0
 else
 	exit 1

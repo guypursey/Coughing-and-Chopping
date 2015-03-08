@@ -1,7 +1,11 @@
 
+# Find source directory.
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # Request `user_code` and `verification_url`.
 
-CLNTID=$(<_client_id.txt)
+CLNTID=$(<"$DIR"/../../userdata/picasa/_client_id.txt)
 CSCOPE="https%3A%2F%2Fpicasaweb.google.com%2Fdata%2F"
 VERREQ=$(curl -s -d "client_id=$CLNTID&scope=$CSCOPE" https://accounts.google.com/o/oauth2/device/code)
 # Code adapted from https://developers.google.com/accounts/docs/OAuth2ForDevices
