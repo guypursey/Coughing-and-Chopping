@@ -1,6 +1,6 @@
-# Coughing & Chopping
+# `ahem`
 
-v0.1.0
+v0.1.1
 
 This repository represents elements of a workflow I use for blogging.
 
@@ -184,19 +184,18 @@ This contains the actual username which appears in the Scriptogram address, used
 
 You can use a Picasa account to store your images and have the image publishing and mapping taken care of automatically.
 
-### `/userdata/picasa/_client_id.txt
+### `/userdata/picasa/_client_id.txt`
 
 Obtained by setting up a project in the Google API console.
 
-### `/userdata/picasa/_client_secret.txt
+### `/userdata/picasa/_client_secret.txt`
 
 Obtained by setting up a project in the Google API console.
 
-### `/userdata/picasa/_device_code.txt
+### `/userdata/picasa/_device_code.txt`
 
 Obtained by setting up a project in the Google API console.
 
 ### `/userdata/picasa/imagemap.csv`
 
 This file should contain the filenames of any images in the `/images` folder where it sits, followed by a comma and then the address of where that image is hosted online. Each file and address pair should sit on a separate line. If using Picasa (as the scripts are currently set up to do), this file should be handled automatically.
-
